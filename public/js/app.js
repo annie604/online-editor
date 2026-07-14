@@ -41,8 +41,30 @@ document.addEventListener('DOMContentLoaded', () => {
         // Configure default template settings
         templates: 'templates/templates.json', // Load static templates list directly (works on both local server and GitHub Pages)
         
+        // Configure Traditional & Simplified Chinese commonly used fonts
+        font_family_formats: 
+            '系統預設=System-UI, -apple-system, sans-serif; ' +
+            '微軟正黑體="Microsoft JhengHei", "Noto Sans TC", sans-serif; ' +
+            '微軟雅黑="Microsoft YaHei", "Noto Sans SC", sans-serif; ' +
+            '蘋方-繁="PingFang TC", sans-serif; ' +
+            '蘋方-簡="PingFang SC", sans-serif; ' +
+            '新細明體="PMingLiU", "MingLiU", serif; ' +
+            '標楷體="DFKai-SB", "BiauKai", serif; ' +
+            '思源黑體 (繁)="Noto Sans TC", sans-serif; ' +
+            '思源宋體 (繁)="Noto Serif TC", serif; ' +
+            '思源黑體 (簡)="Noto Sans SC", sans-serif; ' +
+            '宋體/新宋體="SimSun", "NSimSun", serif; ' +
+            '楷體="KaiTi", serif; ' +
+            '仿宋體="FangSong", serif; ' +
+            '黑體="SimHei", sans-serif; ' +
+            'Arial=arial,helvetica,sans-serif; ' +
+            'Times New Roman=times new roman,times,serif; ' +
+            'Courier New=courier new,courier,monospace',
+
         // Content styles inside the editor iframe to make it look like a Word document
         content_style: `
+            @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;700&display=swap');
+            
             body {
                 font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
                 font-size: 16px;

@@ -59,7 +59,7 @@ app.post('/api/save', (req, res) => {
     fs.mkdirSync(saveDir);
   }
   
-  const filename = `${Date.now()}_${(title || 'untitled').replace(/[^a-zA-Z0-9步-龥]/g, '_')}.html`;
+  const filename = `${Date.now()}_${(title || 'untitled').replace(/[^\u4e00-\u9fa5a-zA-Z0-9_-]/g, '_')}.html`;
   fs.writeFile(path.join(saveDir, filename), content, 'utf8', (err) => {
     if (err) {
       console.error('Failed to save file:', err);

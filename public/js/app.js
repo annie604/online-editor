@@ -289,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `${title.replace(/[^a-zA-Z0-9步-龥]/g, '_')}.html`;
+            a.download = `${title.replace(/[^\u4e00-\u9fa5a-zA-Z0-9_-]/g, '_')}.html`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -328,7 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `${title.replace(/[^a-zA-Z0-9步-龥]/g, '_')}.doc`;
+            a.download = `${title.replace(/[^\u4e00-\u9fa5a-zA-Z0-9_-]/g, '_')}.doc`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -376,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `${title.replace(/[^a-zA-Z0-9步-龥]/g, '_')}.txt`;
+            a.download = `${title.replace(/[^\u4e00-\u9fa5a-zA-Z0-9_-]/g, '_')}.txt`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);

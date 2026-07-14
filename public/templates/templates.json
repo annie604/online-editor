@@ -1,0 +1,17 @@
+[
+  {
+    "title": "專案進度週報 (Weekly Project Report)",
+    "description": "包含本週進度、下週規劃、目前遇到的問題與解決方案等，適用於定期匯報。",
+    "url": "templates/weekly_report.html"
+  },
+  {
+    "title": "專案會議記錄 (Project Meeting Minutes)",
+    "description": "包含會議基本資訊、議題討論、決議事項及待辦清單，助於會後追蹤。",
+    "url": "templates/meeting_minutes.html"
+  },
+  {
+    "title": "標準公文信函 (Standard Business Letter)",
+    "description": "標準格式的商業公文或商務信件，適用於正式對外溝通。",
+    "url": "templates/formal_letter.html"
+  }
+]

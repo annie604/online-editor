@@ -1,0 +1,56 @@
+<h1 style="text-align: center; color: #0d9488; font-family: 'Noto Sans TC', sans-serif;">專案會議記錄</h1>
+<p style="text-align: center; color: #64748b; font-size: 0.95rem;">會議時間：2026年07月14日 10:00 - 11:30 | 地點：線上 Teams 會議室</p>
+<hr style="border: 0; height: 1px; background: #cbd5e1; margin: 20px 0;" />
+
+<h3 style="color: #0d9488; border-left: 4px solid #0d9488; padding-left: 10px; margin-top: 20px;">一、 基本資訊 (General Info)</h3>
+<table style="border-collapse: collapse; width: 100%; border: 1px solid #e2e8f0; margin-top: 10px;">
+    <tbody>
+        <tr>
+            <td style="border: 1px solid #e2e8f0; padding: 10px; background-color: #f8fafc; font-weight: bold; width: 20%;">會議主題</td>
+            <td style="border: 1px solid #e2e8f0; padding: 10px; width: 80%;">DocsFlow 專案編輯器開發進度與架構討論會議</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #e2e8f0; padding: 10px; background-color: #f8fafc; font-weight: bold;">主席 / 主持人</td>
+            <td style="border: 1px solid #e2e8f0; padding: 10px;">[主持人姓名]</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #e2e8f0; padding: 10px; background-color: #f8fafc; font-weight: bold;">與會人員</td>
+            <td style="border: 1px solid #e2e8f0; padding: 10px;">團隊全體成員 (PM, Frontend Dev, Backend Dev, QA)</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3 style="color: #0d9488; border-left: 4px solid #0d9488; padding-left: 10px; margin-top: 30px;">二、 討論與報告事項 (Discussions)</h3>
+<p style="line-height: 1.6; margin-left: 5px;">
+    1. <strong>編輯器元件選擇：</strong> 經討論後，TinyMCE 因其完善的社群資源、文件支援以及簡便的自託管部署方式，被選定為本專案的富文本編輯核心。<br />
+    2. <strong>模版載入機制：</strong> 確定使用前端動態 Fetch 配合 TinyMCE 內建的 Template 插件進行渲染，後端提供 JSON API 列表。
+</p>
+
+<h3 style="color: #0d9488; border-left: 4px solid #0d9488; padding-left: 10px; margin-top: 30px;">三、 會議決議 (Resolutions)</h3>
+<ul>
+    <li>決議第一階段先完成「編輯」、「範本套用」、「檔案儲存至本地磁碟」三項核心功能。</li>
+    <li>所有環境參數必須存放於 <code>.env</code> 檔案，不應將機密資訊與硬編碼寫入代碼庫中。</li>
+</ul>
+
+<h3 style="color: #0d9488; border-left: 4px solid #0d9488; padding-left: 10px; margin-top: 30px;">四、 待辦追蹤事項 (Action Items)</h3>
+<table style="border-collapse: collapse; width: 100%; border: 1px solid #e2e8f0; margin-top: 10px;">
+    <thead>
+        <tr style="background-color: #f1f5f9;">
+            <th style="border: 1px solid #e2e8f0; padding: 10px; text-align: left; width: 45%;">工作內容</th>
+            <th style="border: 1px solid #e2e8f0; padding: 10px; text-align: center; width: 25%;">負責人</th>
+            <th style="border: 1px solid #e2e8f0; padding: 10px; text-align: center; width: 30%;">預計完成日</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border: 1px solid #e2e8f0; padding: 10px;">完成自託管伺服器的測試與 README 撰寫</td>
+            <td style="border: 1px solid #e2e8f0; padding: 10px; text-align: center;">Antigravity</td>
+            <td style="border: 1px solid #e2e8f0; padding: 10px; text-align: center;">2026-07-15</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #e2e8f0; padding: 10px;">前端美化 CSS 佈局調校</td>
+            <td style="border: 1px solid #e2e8f0; padding: 10px; text-align: center;">Frontend team</td>
+            <td style="border: 1px solid #e2e8f0; padding: 10px; text-align: center;">2026-07-16</td>
+        </tr>
+    </tbody>
+</table>

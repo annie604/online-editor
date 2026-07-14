@@ -1,0 +1,26 @@
+{
+  "name": "self-hosted-word-editor",
+  "version": "1.0.0",
+  "description": "A self-hosted Word document editor using TinyMCE, with support for custom templates and environment variables.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "build": "node scripts/copy-tinymce.js",
+    "postinstall": "node scripts/copy-tinymce.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "tinymce": "^7.2.0"
+  },
+  "keywords": [
+    "tinymce",
+    "editor",
+    "word",
+    "self-hosted",
+    "templates"
+  ],
+  "author": "Antigravity",
+  "license": "ISC"
+}

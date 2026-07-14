@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function saveDocument() {
         if (!tinymce.activeEditor) return;
 
-        const title = docTitleInput.value.trim() || '未命名文件';
+        const title = docTitleInput.value.trim() || '未命名';
         const content = tinymce.activeEditor.getContent();
 
         updateSaveStatus('saving', '儲存中...');
@@ -304,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Export document as Word (.doc) compatible file
     function exportDocumentAsWord() {
         if (!tinymce.activeEditor) return;
-        const title = docTitleInput.value.trim() || '未命名文件';
+        const title = docTitleInput.value.trim() || '未命名';
         const htmlContent = tinymce.activeEditor.getContent();
         
         updateSaveStatus('saving', '匯出 Word 中...');
@@ -346,7 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Export document as PDF using browser printing layout
     function exportDocumentAsPdf() {
         if (!tinymce.activeEditor) return;
-        const title = docTitleInput.value.trim() || '未命名文件';
+        const title = docTitleInput.value.trim() || '未命名';
         
         updateSaveStatus('saving', '準備列印...');
         
@@ -366,7 +366,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Export document as Plain Text (.txt) file
     function exportDocumentAsTxt() {
         if (!tinymce.activeEditor) return;
-        const title = docTitleInput.value.trim() || '未命名文件';
+        const title = docTitleInput.value.trim() || '未命名';
         
         updateSaveStatus('saving', '匯出純文字中...');
         

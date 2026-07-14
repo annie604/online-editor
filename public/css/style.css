@@ -543,3 +543,108 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: #94a3b8;
 }
+
+/* Split-Button Dropdown Menu styles */
+.dropdown-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.btn-group {
+    display: flex;
+    align-items: stretch;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.btn-split-main {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+.btn-split-arrow {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    background-color: var(--primary-color);
+}
+
+.btn-split-arrow:hover {
+    background-color: var(--primary-hover);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    min-width: 285px;
+    display: none;
+    flex-direction: column;
+    padding: 8px 0;
+    z-index: 110;
+    transform-origin: top right;
+    animation: dropdown-in 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.dropdown-menu.show {
+    display: flex;
+}
+
+@keyframes dropdown-in {
+    from {
+        transform: translateY(10px) scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.dropdown-item {
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 16px;
+    width: 100%;
+    cursor: pointer;
+    text-align: left;
+    font-family: var(--font-ui);
+    transition: background-color 0.15s ease;
+}
+
+.dropdown-item:hover {
+    background-color: var(--bg-app);
+}
+
+.dropdown-item .item-icon {
+    font-size: 1.15rem;
+    line-height: 1;
+    margin-top: 2px;
+}
+
+.dropdown-item .item-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.dropdown-item .item-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.dropdown-item .item-desc {
+    font-size: 0.725rem;
+    color: var(--text-muted);
+}
+

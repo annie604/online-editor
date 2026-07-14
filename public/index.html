@@ -61,14 +61,54 @@
                     </button>
                 </div>
                 
-                <button id="btn-save" class="btn btn-primary">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
-                        <polyline points="17 21 17 13 7 13 7 21" />
-                        <polyline points="7 3 7 8 15 8" />
-                    </svg>
-                    儲存文件
-                </button>
+                <!-- Split-Button Dropdown for Saving/Exporting -->
+                <div class="dropdown-wrapper">
+                    <div class="btn-group">
+                        <button id="btn-save" class="btn btn-primary btn-split-main">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+                                <polyline points="17 21 17 13 7 13 7 21" />
+                                <polyline points="7 3 7 8 15 8" />
+                            </svg>
+                            儲存文件
+                        </button>
+                        <button id="btn-dropdown-toggle" class="btn btn-primary btn-split-arrow" title="選擇匯出格式">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <path d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="save-dropdown-menu" class="dropdown-menu">
+                        <button id="export-html" class="dropdown-item">
+                            <span class="item-icon">💾</span>
+                            <div class="item-body">
+                                <span class="item-title">儲存 HTML 格式</span>
+                                <span class="item-desc">存至伺服器或下載備份</span>
+                            </div>
+                        </button>
+                        <button id="export-word" class="dropdown-item">
+                            <span class="item-icon">📝</span>
+                            <div class="item-body">
+                                <span class="item-title">匯出 Word 文件 (.doc)</span>
+                                <span class="item-desc">轉存為相容 MS Word 格式</span>
+                            </div>
+                        </button>
+                        <button id="export-pdf" class="dropdown-item">
+                            <span class="item-icon">📕</span>
+                            <div class="item-body">
+                                <span class="item-title">匯出 PDF 文件 (.pdf)</span>
+                                <span class="item-desc">透過瀏覽器列印為 PDF</span>
+                            </div>
+                        </button>
+                        <button id="export-txt" class="dropdown-item">
+                            <span class="item-icon">📋</span>
+                            <div class="item-body">
+                                <span class="item-title">匯出 純文字檔 (.txt)</span>
+                                <span class="item-desc">僅取出內文，無任何格式</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
             </div>
         </header>
 

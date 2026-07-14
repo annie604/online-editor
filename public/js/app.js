@@ -10,6 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveStatusDot = document.getElementById('save-status');
     const saveStatusText = saveStatusDot.querySelector('.status-text');
     const btnSave = document.getElementById('btn-save');
+    const btnDropdownToggle = document.getElementById('btn-dropdown-toggle');
+    const saveDropdownMenu = document.getElementById('save-dropdown-menu');
+    const exportHtml = document.getElementById('export-html');
+    const exportWord = document.getElementById('export-word');
+    const exportPdf = document.getElementById('export-pdf');
+    const exportTxt = document.getElementById('export-txt');
     const btnLayoutPage = document.getElementById('btn-layout-page');
     const btnLayoutFluid = document.getElementById('btn-layout-fluid');
     const editorWrapper = document.getElementById('editor-wrapper');
@@ -95,6 +101,38 @@ document.addEventListener('DOMContentLoaded', () => {
     btnSave.addEventListener('click', saveDocument);
     btnLayoutPage.addEventListener('click', () => setEditorLayout('page'));
     btnLayoutFluid.addEventListener('click', () => setEditorLayout('fluid'));
+
+    // Dropdown menu toggle
+    btnDropdownToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        saveDropdownMenu.classList.toggle('show');
+    });
+
+    // Close dropdown menu when clicking elsewhere
+    document.addEventListener('click', () => {
+        saveDropdownMenu.classList.remove('show');
+    });
+
+    // Format selection action hooks
+    exportHtml.addEventListener('click', () => {
+        saveDropdownMenu.classList.remove('show');
+        saveDocument();
+    });
+
+    exportWord.addEventListener('click', () => {
+        saveDropdownMenu.classList.remove('show');
+        exportDocumentAsWord();
+    });
+
+    exportPdf.addEventListener('click', () => {
+        saveDropdownMenu.classList.remove('show');
+        exportDocumentAsPdf();
+    });
+
+    exportTxt.addEventListener('click', () => {
+        saveDropdownMenu.classList.remove('show');
+        exportDocumentAsTxt();
+    });
 
     // Fetch available templates
     async function fetchTemplates() {
@@ -260,6 +298,96 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (downloadErr) {
             console.error('Download trigger failed:', downloadErr);
             showToast('錯誤', '無法產生下載檔案。', 'error');
+        }
+    }
+
+    // Export document as Word (.doc) compatible file
+    function exportDocumentAsWord() {
+        if (!tinymce.activeEditor) return;
+        const title = docTitleInput.value.trim() || '未命名文件';
+        const htmlContent = tinymce.activeEditor.getContent();
+        
+        updateSaveStatus('saving', '匯出 Word 中...');
+
+        try {
+            // Word MHTML envelope headers to force Word view to Print Layout and set UTF-8 charset
+            const header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' " +
+                "xmlns:w='urn:schemas-microsoft-com:office:word' " +
+                "xmlns='http://www.w3.org/TR/REC-html40'>" +
+                "<head><title>" + title + "</title>" +
+                "<meta charset='utf-8'>" +
+                "<!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom></w:WordDocument></xml><![endif]-->" +
+                "<style>" +
+                "body { font-family: 'Noto Sans TC', sans-serif; }" +
+                "</style>" +
+                "</head><body>";
+            const footer = "</body></html>";
+            const sourceHTML = header + htmlContent + footer;
+            
+            const blob = new Blob(['\ufeff' + sourceHTML], { type: 'application/msword' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${title.replace(/[^a-zA-Z0-9步-龥]/g, '_')}.doc`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            updateSaveStatus('saved', '已匯出 Word');
+            showToast('匯出成功', `已匯出 Word 文件: ${title}.doc`, 'success');
+        } catch (error) {
+            console.error('Word export failed:', error);
+            updateSaveStatus('unsaved', '匯出失敗');
+            showToast('錯誤', '無法產生 Word 檔案。', 'error');
+        }
+    }
+
+    // Export document as PDF using browser printing layout
+    function exportDocumentAsPdf() {
+        if (!tinymce.activeEditor) return;
+        const title = docTitleInput.value.trim() || '未命名文件';
+        
+        updateSaveStatus('saving', '準備列印...');
+        
+        try {
+            // Call TinyMCE printing command (prints iframe content only)
+            tinymce.activeEditor.execCommand('mcePrint');
+            
+            updateSaveStatus('saved', '已叫用列印');
+            showToast('列印提示', '請在系統列印對話框中將印表機選為「另存為 PDF」或「Save as PDF」存檔。', 'info');
+        } catch (error) {
+            console.error('PDF printing failed:', error);
+            updateSaveStatus('unsaved', '列印失敗');
+            showToast('錯誤', '無法喚起列印對話框。', 'error');
+        }
+    }
+
+    // Export document as Plain Text (.txt) file
+    function exportDocumentAsTxt() {
+        if (!tinymce.activeEditor) return;
+        const title = docTitleInput.value.trim() || '未命名文件';
+        
+        updateSaveStatus('saving', '匯出純文字中...');
+        
+        try {
+            const textContent = tinymce.activeEditor.getContent({ format: 'text' });
+            const blob = new Blob([textContent], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${title.replace(/[^a-zA-Z0-9步-龥]/g, '_')}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            updateSaveStatus('saved', '已匯出 TXT');
+            showToast('匯出成功', `已匯出純文字檔: ${title}.txt`, 'success');
+        } catch (error) {
+            console.error('TXT export failed:', error);
+            updateSaveStatus('unsaved', '匯出失敗');
+            showToast('錯誤', '無法產生純文字檔案。', 'error');
         }
     }
 

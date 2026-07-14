@@ -648,3 +648,96 @@ body {
     color: var(--text-muted);
 }
 
+/* Mobile Responsiveness Rules */
+@media (max-width: 768px) {
+    .app-workspace {
+        flex-direction: column;
+    }
+    
+    .app-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 16px;
+        gap: 16px;
+        overflow-y: visible;
+    }
+    
+    .sidebar-section.info-section {
+        display: none; /* Hide system info card on mobile to save space */
+    }
+    
+    .templates-grid {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 8px;
+        gap: 12px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .template-card {
+        min-width: 240px;
+        margin-bottom: 4px;
+        scroll-snap-align: start;
+    }
+    
+    .editor-workspace {
+        padding: 12px;
+    }
+    
+    .editor-wrapper.layout-page-view {
+        height: calc(100vh - 290px);
+        margin: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .app-header {
+        flex-direction: column;
+        height: auto;
+        padding: 12px 16px;
+        gap: 12px;
+        align-items: stretch;
+    }
+    
+    .header-left, .header-right {
+        justify-content: space-between;
+        width: 100%;
+        gap: 8px;
+    }
+    
+    #doc-title {
+        width: 130px;
+        font-size: 0.9rem;
+    }
+    
+    .logo-text {
+        font-size: 1rem;
+    }
+    
+    .layout-toggle {
+        display: none; /* Hide page view toggles on mobile, default A4 or fluid is fine */
+    }
+    
+    .dropdown-wrapper {
+        flex: 1;
+    }
+    
+    .btn-group {
+        width: 100%;
+    }
+    
+    .btn-split-main {
+        flex: 1;
+        justify-content: center;
+    }
+    
+    .dropdown-menu {
+        width: 100%;
+        left: 0;
+        right: 0;
+    }
+}
+
+

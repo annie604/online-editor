@@ -444,8 +444,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Toast Notification System
+    // Toast Notification System (Disabled by user request)
     function showToast(title, message, type = 'info') {
+        // Early return to disable all toast notifications
+        return;
+        
         const toastContainer = document.getElementById('toast-container');
         const toast = document.createElement('div');
         toast.className = `toast toast-${type}`;
